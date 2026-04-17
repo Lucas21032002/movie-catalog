@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { Movie } from "../types/movie";
 
-export default function MovieCard({ movie }: { movie: any }) {
+export default function MovieCard(movie: Movie) {
   const year = movie.release_date
     ? new Date(movie.release_date).getFullYear()
     : "—";
@@ -21,12 +22,10 @@ export default function MovieCard({ movie }: { movie: any }) {
           />
         </div>
 
-        {/* Rating badge */}
         <div className="absolute top-2 right-2 bg-black/70 text-yellow-400 text-xs font-bold px-2 py-1 rounded-lg backdrop-blur-sm">
           ⭐ {rating}
         </div>
 
-        {/* Info overlay */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-3">
           <h3 className="text-white font-semibold text-sm truncate">
             {movie.title}

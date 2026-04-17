@@ -1,6 +1,7 @@
 "use client";
 
 import { useMovies } from "../hooks/use-movies";
+import { Movie } from "../types/movie";
 import EmptyContent from "./empty-content";
 import MovieCard from "./movie-card";
 
@@ -21,7 +22,7 @@ export default function MovieList({ search }: { search?: string }) {
       <p className="text-center text-red-400 py-20">Erro ao carregar filmes.</p>
     );
 
-  const filtered = movies.filter((movie: any) =>
+  const filtered = movies.filter((movie: Movie) =>
     search ? movie.title.toLowerCase().includes(search.toLowerCase()) : true,
   );
 
@@ -29,8 +30,8 @@ export default function MovieList({ search }: { search?: string }) {
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-      {filtered.map((movie: any) => (
-        <MovieCard key={movie.id} movie={movie} />
+      {filtered.map((movie: Movie) => (
+        <MovieCard key={movie.id} {...movie} />
       ))}
     </div>
   );
