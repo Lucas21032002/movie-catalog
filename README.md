@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 Movie Catalog
 
-## Getting Started
+Aplicação web para descobrir e explorar os filmes mais populares do momento, utilizando a API do TMDb.
 
-First, run the development server:
+---
+
+## 🚀 Tecnologias
+
+- Next.js 16 — framework React com App Router
+- React 19
+- TanStack Query v5 — gerenciamento de estado assíncrono
+- Axios — cliente HTTP
+- Tailwind CSS v4 — estilização
+- TypeScript
+
+---
+
+## 📁 Arquitetura do Projeto
+
+app/
+├── components/ # Componentes reutilizáveis (MovieCard, MovieList, SearchBar...)
+├── hooks/ # Custom hooks (useMovies, useMovieDetails)
+├── lib/ # Configurações de bibliotecas (React Query)
+├── movie/[id]/ # Página de detalhes do filme
+├── providers/ # Providers globais (QueryProvider)
+├── services/ # Chamadas à API do TMDB
+├── types/ # Interfaces TypeScript
+└── page.tsx # Página principal
+
+---
+
+## ✨ Funcionalidades
+
+- Listagem dos filmes mais populares
+- Busca por título com debounce
+- Página de detalhes com informações completas do filme
+- Navegação entre páginas
+- Layout responsivo (mobile e desktop)
+
+---
+
+## ⚙️ Pré-requisitos
+
+- Node.js >= 18
+- pnpm instalado globalmente
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install -g pnpm
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Pré-requisitos
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Node.js >= 18
+- pnpm instalado globalmente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install -g pnpm
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Configuração
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**1. Clone o repositório:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+git clone https://github.com/Lucas21032002/movie-catalog
+cd movie-catalog
+```
 
-## Deploy on Vercel
+**2. Instale as dependências:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm install
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**3. Crie o arquivo .env.local na raiz do projeto:**
+
+```env
+NEXT_PUBLIC_TMDB_API_KEY=sua_chave_aqui
+NEXT_PUBLIC_TMDB_BASE_URL=https://api.themoviedb.org/3
+```
+
+> 💡 Obtenha sua chave em [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api).
+
+---
+
+## ▶️ Rodando o projeto
+
+```bash
+pnpm dev
+```
+
+Acesse [http://localhost:3000] no navegador.
