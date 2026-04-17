@@ -7,6 +7,5 @@ export function useMovies() {
   return useQuery({
     queryKey: ["movies"],
     queryFn: getPopularMovies,
-    gcTime: 0,
   });
 }
