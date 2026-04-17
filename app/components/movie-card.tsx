@@ -7,35 +7,33 @@ export default function MovieCard({ movie }: { movie: any }) {
     ? new Date(movie.release_date).getFullYear()
     : "—";
 
+  const rating = movie.vote_average?.toFixed(1);
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-      <Link href={`/movie/${movie.id}`} key={movie.id}>
-        <div className="group bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="aspect-[2/3] overflow-hidden bg-muted">
-            <img
-              src={
-                movie.poster_path
-                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                  : "/placeholder.png"
-              }
-              alt={movie.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              loading="eager"
-            />
-          </div>
-          <div className="p-3">
-            <h3 className="font-semibold text-sm text-black truncate">
-              {movie.title}
-            </h3>
-            <div className="flex items-center justify-between mt-1">
-              <span className="text-xs text-black">{year}</span>
-              <button className="text-xs font-medium text-white bg-blue-500 px-2 py-1 rounded hover:bg-blue-600 transition-colors duration-300">
-                Detalhes
-              </button>
-            </div>
-          </div>
+    <Link href={`/movie/${movie.id}`}>
+      <div className="group relative rounded-xl overflow-hidden bg-zinc-900 hover:ring-2 hover:ring-yellow-400 transition-all duration-300 cursor-pointer">
+        <div className="aspect-[2/3] overflow-hidden">
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
         </div>
-      </Link>
-    </div>
+
+        {/* Rating badge */}
+        <div className="absolute top-2 right-2 bg-black/70 text-yellow-400 text-xs font-bold px-2 py-1 rounded-lg backdrop-blur-sm">
+          ⭐ {rating}
+        </div>
+
+        {/* Info overlay */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-3">
+          <h3 className="text-white font-semibold text-sm truncate">
+            {movie.title}
+          </h3>
+          <span className="text-zinc-400 text-xs">{year}</span>
+        </div>
+      </div>
+    </Link>
   );
 }
